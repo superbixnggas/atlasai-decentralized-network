@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AtlasAI - Decentralized Robotic Data Network | X402 Integration</title>
+    <meta name="description" content="Turn your browser into a global sensor. Contribute real-world data, train AI models, and earn X402 tokens. Join the first decentralized robotic data network on Solana.">
+    <meta name="keywords" content="AtlasAI, decentralized data network, Solana token, AI training data, robotics, blockchain, Phantom wallet, $AtlasAI, pump.fun, data collection">
+    <meta name="author" content="AtlasAI Team">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://atlasai.xyz">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://atlasai.xyz">
+    <meta property="og:title" content="AtlasAI - Decentralized Robotic Data Network | $AtlasAI Token">
+    <meta property="og:description" content="Turn your browser into a global sensor. Contribute real-world data, train AI models, and earn $AtlasAI tokens.">
+    <meta property="og:image" content="https://atlasai.xyz/og-image.png">
+    <meta property="og:site_name" content="AtlasAI">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://atlasai.xyz">
+    <meta property="twitter:title" content="AtlasAI - Decentralized Robotic Data Network | $AtlasAI Token">
+    <meta property="twitter:description" content="Turn your browser into a global sensor. Contribute real-world data, train AI models, and earn $AtlasAI tokens.">
+    <meta property="twitter:image" content="https://atlasai.xyz/og-image.png">
+    
+    <!-- Additional Meta Tags -->
+    <meta name="theme-color" content="#00FFFF">
+    <meta name="msapplication-TileColor" content="#00FFFF">
+    <meta name="application-name" content="AtlasAI">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Background Canvas for Global Map -->
+    <canvas id="globalMap" class="global-map-canvas"></canvas>
+    
+    <!-- Navigation -->
+    <nav class="nav nav-enhanced" role="navigation" aria-label="Main navigation">
+        <div class="nav-container">
+            <div class="nav-logo" role="banner">
+                <div class="logo-icon" aria-hidden="true">🗺️</div>
+                <span class="logo-text">AtlasAI</span>
+            </div>
+            <div class="nav-links" role="menubar">
+                <a href="#mission" class="nav-link" role="menuitem">Mission</a>
+                <a href="#stats" class="nav-link" role="menuitem">Stats</a>
+                <a href="#leaderboard" class="nav-link" role="menuitem">Leaderboard</a>
+                <a href="#explorer" class="nav-link" role="menuitem">Explorer</a>
+            </div>
+            <button class="btn btn-primary connect-wallet-btn" id="connectWalletBtn" aria-label="Connect Phantom wallet">
+                <i data-lucide="wallet" aria-hidden="true"></i>
+                <span>Connect Phantom</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="main-content" role="main">
+
+    <!-- Hero Section -->
+    <section class="hero" data-animate="slide-up">
+        <div class="hero-content">
+            <div class="hero-text" data-animate="slide-left">
+                <h1 class="hero-title">Turn Your Browser Into a Global Sensor</h1>
+                <p class="hero-subtitle">Contribute data. Train AI. Earn X402. All from your browser.</p>
+                <div class="hero-cta" data-animate="fade-in">
+                    <button class="btn btn-primary btn-large primary-cta" id="startMissionBtn" aria-describedby="mission-help">
+                        <i data-lucide="play" aria-hidden="true"></i>
+                        <span>Start Mission</span>
+                    </button>
+                    <button class="btn btn-secondary btn-large secondary-cta" id="learnMoreBtn">
+                        <span>Learn More</span>
+                    </button>
+                    <div id="mission-help" class="sr-only">
+                        Start collecting data to earn X402 tokens
+                    </div>
+                </div>
+            </div>
+            <div class="hero-stats" data-animate="slide-right">
+                <div class="stat-card card-interactive" data-animate="fade-in" data-animate-delay="0.1">
+                    <div class="stat-label">Total Contributors</div>
+                    <div class="stat-value counter" id="totalContributors">1,842,069</div>
+                </div>
+                <div class="stat-card card-interactive" data-animate="fade-in" data-animate-delay="0.2">
+                    <div class="stat-label">Data Collected</div>
+                    <div class="stat-value counter" id="dataCollected">847.2K</div>
+                </div>
+                <div class="stat-card card-interactive" data-animate="fade-in" data-animate-delay="0.3">
+                    <div class="stat-label">X402 Rewarded</div>
+                    <div class="stat-value counter" id="totalRewards">284.7M</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works" data-animate="slide-up">
+        <div class="container">
+            <h2 class="section-title" data-animate="fade-in">How It Works</h2>
+            <div class="steps-grid">
+                <div class="step-card card" data-animate="fade-in" data-animate-delay="0.1">
+                    <div class="step-icon">
+                        <i data-lucide="wallet" aria-hidden="true"></i>
+                    </div>
+                    <h3 class="step-title">1. Connect Wallet</h3>
+                    <p class="step-description">Simply connect your Phantom wallet. No registration required.</p>
+                </div>
+                <div class="step-card card" data-animate="fade-in" data-animate-delay="0.2">
+                    <div class="step-icon">
+                        <i data-lucide="camera" aria-hidden="true"></i>
+                    </div>
+                    <h3 class="step-title">2. Send Data</h3>
+                    <p class="step-description">Contribute location, photos, videos, or audio through your browser.</p>
+                </div>
+                <div class="step-card card" data-animate="fade-in" data-animate-delay="0.3">
+                    <div class="step-icon">
+                        <i data-lucide="coins" aria-hidden="true"></i>
+                    </div>
+                    <h3 class="step-title">3. Get Reward</h3>
+                    <p class="step-description">Earn X402 tokens based on your data quality and contribution.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Dashboard -->
+    <section class="mission-dashboard" id="mission" data-animate="slide-up">
+        <div class="container">
+            <h2 class="section-title" data-animate="fade-in">Available Missions</h2>
+            <div class="missions-grid">
+                <div class="mission-card card card-interactive" data-animate="fade-in" data-animate-delay="0.1">
+                    <div class="mission-header">
+                        <div class="mission-icon" aria-hidden="true">
+                            <i data-lucide="camera"></i>
+                        </div>
+                        <div class="mission-info">
+                            <h3 class="mission-title">Capture Environment</h3>
+                            <p class="mission-description">Take photos or videos of your surroundings</p>
+                        </div>
+                    </div>
+                    <div class="mission-details">
+                        <div class="reward-info">
+                            <span class="reward-label">Reward:</span>
+                            <span class="reward-value">5-10 X402</span>
+                        </div>
+                        <button class="mission-btn" onclick="startMission('capture')">
+                            <i data-lucide="play"></i>
+                            Start Mission
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="mission-card">
+                    <div class="mission-header">
+                        <div class="mission-icon">
+                            <i data-lucide="map-pin"></i>
+                        </div>
+                        <div class="mission-info">
+                            <h3 class="mission-title">GeoTag Location</h3>
+                            <p class="mission-description">Share precise GPS coordinates of interesting locations</p>
+                        </div>
+                    </div>
+                    <div class="mission-details">
+                        <div class="reward-info">
+                            <span class="reward-label">Reward:</span>
+                            <span class="reward-value">1-5 X402</span>
+                        </div>
+                        <button class="mission-btn" onclick="startMission('geotag')">
+                            <i data-lucide="play"></i>
+                            Start Mission
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="mission-card">
+                    <div class="mission-header">
+                        <div class="mission-icon">
+                            <i data-lucide="mic"></i>
+                        </div>
+                        <div class="mission-info">
+                            <h3 class="mission-title">Audio Sample</h3>
+                            <p class="mission-description">Record short audio clips of your environment</p>
+                        </div>
+                    </div>
+                    <div class="mission-details">
+                        <div class="reward-info">
+                            <span class="reward-label">Reward:</span>
+                            <span class="reward-value">3-7 X402</span>
+                        </div>
+                        <button class="mission-btn" onclick="startMission('audio')">
+                            <i data-lucide="play"></i>
+                            Start Mission
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section" id="stats" data-animate="slide-up" style="display: none;">
+        <div class="container">
+            <h2 class="section-title" data-animate="fade-in">Platform Statistics</h2>
+            
+            <div class="stats-grid">
+                <div class="stat-card card" data-animate="fade-in" data-animate-delay="0.1">
+                    <div class="stat-icon">
+                        <i data-lucide="users"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 class="stat-value" id="stat-total-users">15,420</h3>
+                        <p class="stat-label">Total Users</p>
+                        <span class="stat-change positive">+342 today</span>
+                    </div>
+                </div>
+                
+                <div class="stat-card card" data-animate="fade-in" data-animate-delay="0.2">
+                    <div class="stat-icon">
+                        <i data-lucide="target"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 class="stat-value" id="stat-total-missions">8,475</h3>
+                        <p class="stat-label">Missions Completed</p>
+                        <span class="stat-change positive">+127 today</span>
+                    </div>
+                </div>
+                
+                <div class="stat-card card" data-animate="fade-in" data-animate-delay="0.3">
+                    <div class="stat-icon">
+                        <i data-lucide="database"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 class="stat-value" id="stat-total-contributions">124,580</h3>
+                        <p class="stat-label">Data Contributions</p>
+                        <span class="stat-change positive">+1,248 today</span>
+                    </div>
+                </div>
+                
+                <div class="stat-card card" data-animate="fade-in" data-animate-delay="0.4">
+                    <div class="stat-icon">
+                        <i data-lucide="coins"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 class="stat-value" id="stat-x402-distributed">2.84M</h3>
+                        <p class="stat-label">X402 Tokens Distributed</p>
+                        <span class="stat-change positive">+28.4K today</span>
+                    </div>
+                </div>
+                
+                <div class="stat-card card" data-animate="fade-in" data-animate-delay="0.5">
+                    <div class="stat-icon">
+                        <i data-lucide="upload-cloud"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 class="stat-value" id="stat-ipfs-uploads">34,567</h3>
+                        <p class="stat-label">IPFS Uploads</p>
+                        <span class="stat-change positive">+312 today</span>
+                    </div>
+                </div>
+                
+                <div class="stat-card card" data-animate="fade-in" data-animate-delay="0.6">
+                    <div class="stat-icon">
+                        <i data-lucide="cpu"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 class="stat-value" id="stat-ai-validations">28,934</h3>
+                        <p class="stat-label">AI Validations</p>
+                        <span class="stat-change positive">+289 today</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Real-time Activity Feed -->
+            <div class="activity-feed" data-animate="fade-in" data-animate-delay="0.7">
+                <h3>Real-time Activity</h3>
+                <div class="feed-items" id="activityFeed">
+                    <!-- Activity items will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Explorer Section -->
+    <section class="explorer-section" id="explorer" data-animate="slide-up" style="display: none;">
+        <div class="container">
+            <h2 class="section-title" data-animate="fade-in">Data Explorer</h2>
+            
+            <!-- Search and Filters -->
+            <div class="explorer-controls" data-animate="fade-in" data-animate-delay="0.1">
+                <div class="search-bar">
+                    <i data-lucide="search"></i>
+                    <input type="text" placeholder="Search by wallet, type, or location..." id="explorerSearch">
+                </div>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-type="all">All Data</button>
+                    <button class="filter-btn" data-type="image">Images</button>
+                    <button class="filter-btn" data-type="video">Videos</button>
+                    <button class="filter-btn" data-type="audio">Audio</button>
+                    <button class="filter-btn" data-type="location">Locations</button>
+                </div>
+            </div>
+            
+            <!-- Data Grid -->
+            <div class="explorer-grid" id="explorerGrid" data-animate="fade-in" data-animate-delay="0.2">
+                <!-- Explorer items will be loaded here -->
+                <div class="loading-placeholder">
+                    <i data-lucide="loader-2" class="animate-spin"></i>
+                    <p>Loading public data...</p>
+                </div>
+            </div>
+            
+            <!-- Map View (Optional) -->
+            <div class="map-view" data-animate="fade-in" data-animate-delay="0.3" style="display: none;">
+                <h3>Global Data Distribution</h3>
+                <div class="map-container" id="explorerMap">
+                    <div class="map-placeholder">
+                        <i data-lucide="map"></i>
+                        <p>Interactive map view will be loaded here</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leaderboard Section -->
+    <section class="leaderboard" id="leaderboard">
+        <div class="container">
+            <h2 class="section-title">Top Contributors</h2>
+            <div class="leaderboard-table">
+                <div class="leaderboard-header">
+                    <div class="rank-col">Rank</div>
+                    <div class="address-col">Wallet Address</div>
+                    <div class="contributions-col">Contributions</div>
+                    <div class="rewards-col">Total Rewards</div>
+                </div>
+                <div class="leaderboard-rows" id="leaderboardRows">
+                    <!-- Leaderboard entries will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Token Information -->
+    <section class="token-info">
+        <div class="container">
+            <h2 class="section-title">X402 Integration</h2>
+            <div class="token-grid">
+                <div class="token-card">
+                    <h3 class="token-title">Token Details</h3>
+                    <div class="token-details">
+                        <div class="token-item">
+                            <span class="token-label">Blockchain:</span>
+                            <span class="token-value">Solana</span>
+                        </div>
+                        <div class="token-item">
+                            <span class="token-label">Token Standard:</span>
+                            <span class="token-value">SPL Token</span>
+                        </div>
+                        <div class="token-item">
+                            <span class="token-label">Contract Address:</span>
+                            <span class="token-value monospace">X402_TOKEN_ADDRESS</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="token-card">
+                    <h3 class="token-title">Distribution</h3>
+                    <div class="token-details">
+                        <div class="token-item">
+                            <span class="token-label">Contributors:</span>
+                            <span class="token-value">70%</span>
+                        </div>
+                        <div class="token-item">
+                            <span class="token-label">Validators:</span>
+                            <span class="token-value">20%</span>
+                        </div>
+                        <div class="token-item">
+                            <span class="token-label">Development:</span>
+                            <span class="token-value">10%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <div class="logo-icon">🗺️</div>
+                    <span class="logo-text">AtlasAI</span>
+                </div>
+                <div class="footer-links">
+                    <a href="#" class="footer-link">Whitepaper</a>
+                    <a href="#" class="footer-link">Documentation</a>
+                    <a href="#" class="footer-link">GitHub</a>
+                    <a href="#" class="footer-link">Terms</a>
+                </div>
+                <div class="footer-social">
+                    <a href="#" class="social-link"><i data-lucide="twitter"></i></a>
+                    <a href="#" class="social-link"><i data-lucide="message-circle"></i></a>
+                    <a href="#" class="social-link"><i data-lucide="github"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 AtlasAI. All rights reserved. Building the future of decentralized AI data.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mission Modal -->
+    <div class="modal-overlay" id="missionModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modalTitle">Start Mission</h3>
+                <button class="modal-close" onclick="closeModal()">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            <div class="modal-content" id="modalContent">
+                <!-- Mission content will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <!-- Enhanced Integration Scripts (Load Order Matters) -->
+    <!-- 1. Core Service Modules -->
+    <script src="solana-integration.js"></script>
+    <script src="ipfs-integration.js"></script>
+    <script src="ai-validation.js"></script>
+    <script src="database-service.js"></script>
+    
+    <!-- 2. Enhanced Main Application -->
+    <script src="script-enhanced.js"></script>
+    
+    <!-- 3. Complete Integration Layer -->
+    <script src="atlasai-complete-integration.js"></script>
+    
+    <!-- 4. Legacy Script (for backward compatibility) -->
+    <script src="script.js"></script>
+</body>
+</html>
