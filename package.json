@@ -1,0 +1,34 @@
+{
+  "name": "atlasai-website",
+  "version": "1.0.0",
+  "description": "AtlasAI - Decentralized Robotic Data Network",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx serve .",
+    "build": "echo 'Static site - no build needed'",
+    "start": "npx serve . -p 3000"
+  },
+  "keywords": [
+    "atlasai",
+    "decentralized",
+    "robotics",
+    "data-network",
+    "solana",
+    "blockchain",
+    "ai",
+    "token"
+  ],
+  "author": "AtlasAI Team",
+  "license": "MIT",
+  "devDependencies": {
+    "serve": "^14.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/atlasai/website"
+  },
+  "bugs": {
+    "url": "https://github.com/atlasai/website/issues"
+  },
+  "homepage": "https://atlasai.xyz"
+}
